@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubbles love ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('img/corazones.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .message {
+            background: rgba(195, 135, 230, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            font-size: 28px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .message:hover {
+            transform: scale(1.1);
+        }
+
+        .hearts {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            z-index: -1;
+            font-size: 50px;
+            color: #ff99b6;
+            animation: floatHearts 5s ease-in-out infinite;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-150px) scale(1.5);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .hearts:nth-child(2) {
+            left: 25%;
+            animation-duration: 6s;
+        }
+
+        .hearts:nth-child(3) {
+            left: 40%;
+            animation-duration: 7s;
+        }
+
+        .hearts:nth-child(4) {
+            left: 60%;
+            animation-duration: 8s;
+        }
+
+        .hearts:nth-child(5) {
+            left: 75%;
+            animation-duration: 9s;
+        }
+
+        .text-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .charming-text {
+            position: absolute;
+            font-size: 18px;
+            font-family: 'Cursive', sans-serif;
+            color: #d63384;
+            animation: fadeInText 6s ease-in-out infinite;
+            z-index: 1;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 80vw;
+            word-wrap: break-word;
+        }
+
+        .charming-text:nth-child(1) {
+            top: 15%;
+            left: 5%;
+            text-align: left;
+            animation-duration: 6s;
+        }
+
+        .charming-text:nth-child(2) {
+            top: 25%;
+            left: 5%;
+            text-align: left;
+            animation-duration: 7s;
+        }
+
+        .charming-text:nth-child(3) {
+            top: 35%;
+            left: 5%;
+            text-align: left;
+            animation-duration: 8s;
+        }
+
+        .charming-text:nth-child(4) {
+            top: 15%;
+            right: 5%;
+            text-align: right;
+            animation-duration: 6s;
+        }
+
+        .charming-text:nth-child(5) {
+            top: 25%;
+            right: 5%;
+            text-align: right;
+            animation-duration: 7s;
+        }
+
+        .charming-text:nth-child(6) {
+            top: 35%;
+            right: 5%;
+            text-align: right;
+            animation-duration: 8s;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .flowers {
+            position: absolute;
+            bottom: 10px;
+            animation: flowerAnimation 5s ease-in-out infinite;
+            font-size: 30px;
+        }
+
+        @keyframes flowerAnimation {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateY(-50px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+        }
+
+        .flowers:nth-child(1) {
+            left: 10%;
+            animation-duration: 6s;
+        }
+
+        .flowers:nth-child(2) {
+            left: 30%;
+            animation-duration: 7s;
+        }
+
+        .flowers:nth-child(3) {
+            left: 50%;
+            animation-duration: 8s;
+        }
+
+        .flowers:nth-child(4) {
+            left: 70%;
+            animation-duration: 9s;
+        }
+
+        .flowers:nth-child(5) {
+            left: 90%;
+            animation-duration: 10s;
+        }
+
+        .bubbles {
+            position: absolute;
+            bottom: 10px;
+            font-size: 25px;
+            color: #ff99b6;
+            animation: bubbleAnimation 7s ease-in-out infinite;
+        }
+
+        @keyframes bubbleAnimation {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateY(-100px) scale(1.3);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        .bubbles:nth-child(1) {
+            left: 10%;
+            animation-duration: 8s;
+        }
+
+        .bubbles:nth-child(2) {
+            left: 30%;
+            animation-duration: 9s;
+        }
+
+        .bubbles:nth-child(3) {
+            left: 50%;
+            animation-duration: 10s;
+        }
+
+        .bubbles:nth-child(4) {
+            left: 70%;
+            animation-duration: 11s;
+        }
+
+        .bubbles:nth-child(5) {
+            left: 90%;
+            animation-duration: 12s;
+        }
+
+        #bubbles-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .text-bubble {
+            position: absolute;
+            font-size: 18px;
+            font-family: 'Cursive', sans-serif;
+            color: #d63384;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: floatText 8s ease-in-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes floatText {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(0px);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2) translateY(-50px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1) translateY(-100px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-size: 100% 100%;
+                background-position: center top;
+            }
+
+            .message {
+                font-size: 24px;
+                padding: 20px;
+            }
+
+            .charming-text {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+
+            .flowers {
+                font-size: 25px;
+            }
+
+            .bubbles {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-position: center top;
+                background-size: cover;
+            }
+        }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .audio-controls button {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .audio-controls button:hover {
+            background: #b52b6f;
+        }
+
+        .audio-controls input[type="range"] {
+            width: 100px;
+        }
+
+        /* ... emagen ... */
+
+        .center-image {
+            position: fixed;
+            bottom: 0;
+            /* Cambiar de 20px a 0 para que esté al ras */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            transition: transform 0.3s ease;
+            animation: flipHorizontal 2s infinite;
+            z-index: 2;
+        }
+
+        .center-image:hover {
+            transform: translateX(-50%) scale(1.5);
+            /* Agranda suavemente al pasar el mouse */
+        }
+
+        .center-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+
+        @keyframes flipHorizontal {
+            0% {
+                transform: translateX(-50%) scaleX(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scaleX(-1);
+            }
+
+            100% {
+                transform: translateX(-50%) scaleX(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="message">Feliz cumpleaños Sra. Damaris ❤️</div>
+    <div id="bubbles-text"></div>
+    <audio id="backgroundMusic" loop>
+        <source src="img/cumpleaños_mezcla.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="audio-controls">
+        <button id="playPauseBtn">▶️ Play</button>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+    </div>
+
+    <div class="message">❤️ Eres la mejor ❤️</div>
+    <div id="bubbles-text"></div>
+    <script src="script.js"></script>
+    <script>
+        // Audio control functionality
+        const audio = document.getElementById('backgroundMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        // Set initial volume
+        audio.volume = volumeSlider.value;
+
+        // Play/Pause functionality
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = '⏸️ Pause';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶️ Play';
+            }
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        // Auto-play attempt when page loads
+        window.addEventListener('load', () => {
+            audio.play().catch(error => {
+                console.log("Auto-play prevented:", error);
+            });
+        });
+
+        // Lista de mensajes románticos que aparecerán en burbujas
+        const messages = [
+            "😊Amiga Damaris ❤️",
+            "💆‍♀️Gracias por estar en mi vida 🌟",
+            "😊Eres mi persona Muy especial 💕",
+            "💆‍♀️Gracias por comprender mis cambios de animo 🥰",
+            "💆‍♀️Espero que en este día la pases muy bien... 💖",
+            "😊Con tu sonrisa que ilumina 💫",
+            "💆‍♀️Eres una compañera muy especial 😍",
+            "😊Corchita como siempre y aveces con cambios de animo ✨",
+            "💆‍♀️Siempre deseo lo mejor para ti 💭",
+            "✨Feliz cumpleaños... pasala bien DAMARISssss 💘",
+            "😊💖 Siempre deseo lo mejor para ti 💭 💖😊",
+            "🎉💘 Feliz cumpleaños... pasala bien DAMARISssss 💘🎉",
+            "😄🍰 ¡Feliz cumple, Damaris! Espero que hoy no falte buena comida, risas y cero estrés. 🍰😄",
+            "😂✨ Un año más vieja, pero aún con estilo. ¡Felicidades, Damaris! ✨😂",
+            "💆‍♀️🥳 Damaris, que hoy te consientan tanto que te dé pereza volver a la rutina mañana. ¡Feliz cumple! 🥳💆‍♀️",
+            "🎈😎 ¡Ey Damaris! Otro año más sobreviviendo… eso ya es motivo de celebración. ¡Feliz cumpleaños! 😎🎈",
+            "🎂😋 Felicidades, Damaris. Que hoy no te falte pastel ni excusas para no hacer nada. 😋🎂",
+            "🍕💤 ¡Feliz cumple, Damaris! Disfrutá, comé rico y que nadie te moleste hoy. 💤🍕",
+            "📩😁 Un saludo rápido pero sincero: que la pases brutal hoy, Damaris. ¡Feliz cumpleaños! 😁📩",
+            "📅🙌 Otro añito más en el archivo… ¡Felicidades, Damaris! 🙌📅",
+            "🎊🍀 Damaris, hoy es el único día donde todo está permitido. ¡Aprovechá! Feliz cumple. 🍀🎊",
+            "🛌🍰 ¡Feliz cumpleaños, Damaris! Nada de planes raros: comé bien, dormí bien y que te mimen. 🍰🛌"
+        ];
+
+        window.addEventListener('load', () => {
+            const tryPlay = () => {
+                audio.muted = false; // Quita el mute si estaba puesto
+                audio.play().catch(error => {
+                    console.log("Auto-play bloqueado, esperando interacción del usuario.");
+                });
+                // Quita el listener después de la primera interacción
+                document.removeEventListener('click', tryPlay);
+            };
+
+            // Intenta reproducir automáticamente
+            audio.play().catch(() => {
+                console.log("Esperando clic para iniciar música...");
+                document.addEventListener('click', tryPlay);
+            });
+        });
+        // Función que crea una burbuja de texto con un mensaje aleatorio
+        function createTextBubble() {
+            // Creamos un nuevo elemento <div>
+            const bubble = document.createElement("div");
+
+            // Le asignamos la clase CSS "text-bubble" (debes definirla en tu CSS)
+            bubble.className = "text-bubble";
+
+            // Seleccionamos un mensaje aleatorio del arreglo
+            bubble.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+            // Calculamos una posición aleatoria dentro de la pantalla (entre 10% y 90%)
+            const randomLeft = Math.random(); // 0 to 1
+            const randomTop = Math.random();   // 0 to 1
+
+            const container = document.getElementById("bubbles-text");
+            container.appendChild(bubble);
+
+            // Position after appending to get actual dimensions
+            setTimeout(() => {
+                const rect = bubble.getBoundingClientRect();
+
+                // Calculate max allowed left/top to keep element fully in view
+                const maxLeft = window.innerWidth - rect.width;
+                const maxTop = window.innerHeight - rect.height;
+
+                // Set initial position, clamping to screen boundaries
+                bubble.style.left = `${Math.min(maxLeft, randomLeft * window.innerWidth)}px`;
+                bubble.style.top = `${Math.min(maxTop, randomTop * window.innerHeight)}px`;
+
+                // If the bubble's width is greater than the window's width,
+                // set its max-width to the window's width and allow wrapping.
+                if (rect.width > window.innerWidth) {
+                    bubble.style.maxWidth = `${window.innerWidth - 20}px`; // -20 for some padding
+                    bubble.style.whiteSpace = 'normal'; // Allow text to wrap
+                }
+
+            }, 0); // Use 0ms timeout to ensure DOM update for getBoundingClientRect
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 8000);
+        }
+        // Llamamos a la función createTextBubble cada 500 milisegundos (0.5 segundos)
+        setInterval(createTextBubble, 500);
+
+
+    </script>
+    <!-- imagen  -->
+    <div class="center-image">
+        <img src="img/dam.png" alt="Center Image">
+    </div>
+</body>
+
+</html>
