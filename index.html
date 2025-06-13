@@ -441,7 +441,7 @@
 </head>
 
 <body>
-    <div class="message">Feliz cumpleaños Sra. Damaris ❤️</div>
+    <div class="message">Feliz cumpleaños Srta. Damaris ❤️</div>
     <div id="bubbles-text"></div>
     <audio id="backgroundMusic" loop>
         <source src="img/cumpleaños_mezcla.mp3" type="audio/mp3">
@@ -449,7 +449,7 @@
     </audio>
 
     <div class="audio-controls">
-        <button id="playPauseBtn">▶️ Play</button>
+        <button id="playPauseBtn">▶️ clieckeame Play</button>
         <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
     </div>
 
@@ -466,7 +466,7 @@
         audio.volume = volumeSlider.value;
 
         // Play/Pause functionality
-        playPauseBtn.addEventListener('click', () => {
+        playPauseBtn.addEventListener('load', () => {
             if (audio.paused) {
                 audio.play();
                 playPauseBtn.textContent = '⏸️ Pause';
